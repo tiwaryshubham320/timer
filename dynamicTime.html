@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Dynamic Time Demo</title>
+		<script type="text/javascript">
+			var sec=0;
+			var ID=0;
+			var min=0;
+			var hour=0;
+			function printMsg(){
+				document.getElementById("p1").innerHTML=hour+"Hours "+min+"Minutes "+sec+"Seconds ";
+				sec++;
+				if(sec==60){
+					min++;
+					sec=0;
+					if (min==60){
+						hour++;
+						min=0;
+					}
+				}
+				if(hour==2 && sec==0){
+					alert("Time is over");
+					sec=0,hour=0,min=0;
+				}
+			}
+			function start(){
+				ID=window.setInterval(printMsg,1000);
+			}
+			function stop(){
+				window.clearTimeout(ID);
+			}
+			function reset(){
+				document.getElementById("p1").innerHTML="0 Hours 0 Minutes 0 Seconds";
+				sec=0,hour=0,min=0;
+			}
+		</script>
+	</head>
+	
+	<body style="background-color:25D366">
+		<button onclick="start()">Start timer</button><br>
+		<h1 id="p1">Hi! I am Shubham..</h1><br>
+		<button onclick="stop()">Stop timer</button><br>
+		<button onclick="reset()">Reset</button>
+	</body>
+</html>
+
+
